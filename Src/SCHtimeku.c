@@ -9,16 +9,14 @@
 #include "stm32f1xx_hal.h"
 #include "HardwareInitku.h"
 #include "LCDku.h"
+#include "Taskku.h"
 
 
-void TIM4_IRQHandler(void){
-
-}
 void SCH_Init(void){
 	RCC->APB1ENR |= RCC_APB1ENR_TIM4EN;
 
 	TIM4->PSC = 0;
-	TIM4->ARR = 72;
+	TIM4->ARR = 144;
 	TIM4->CR1 |= TIM_CR1_URS;
 	TIM4->DIER |= TIM_DIER_UIE;
 	TIM4->EGR |= TIM_EGR_UG;
@@ -26,6 +24,7 @@ void SCH_Init(void){
 	NVIC_EnableIRQ(TIM4_IRQn);
 
 	SysTick_Config(SystemCoreClock/1000);
+
 }
 void task_Init(void){
 	milisec=0;

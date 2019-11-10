@@ -8,6 +8,7 @@
 #include "LCDku.h"
 #include "HardwareInitku.h"
 #include "SCHtimeku.h"
+#include "SCHtimeku2.h"
 #include "Sensorku.h"
 #include "Counterku.h"
 /* USER CODE END Includes */
@@ -29,6 +30,10 @@ int main(void)
 	LCD_Init();
 	LCD_Clear();
 	HAL_GPIO_WritePin(LCD_Katoda_GPIO_Port, LCD_Katoda_Pin, GPIO_PIN_SET);
+	LCD_SetCursor(0, 0);
+	LCD_Print("BISMILLAH.");
+	SCH_Init();
+	SCH_Init2();
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
@@ -36,21 +41,6 @@ int main(void)
 	while (1)
 	{
 
-		Show_Counter();
-		show_timer();
-		if(Sensor_ADC_One()){
-			Count_Sens_One();
-		}
-		if(Sensor_ADC_Two()){
-			Count_Sens_Two();
-		}
-		if(Sensor_ADC_Three()){
-			Count_Sens_Three();
-		}
-
-		if(pbReset_Handler()){
-			PbReset_ON();
-		}
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
