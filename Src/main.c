@@ -9,6 +9,7 @@
 #include "HardwareInitku.h"
 #include "SCHtimeku.h"
 #include "Sensorku.h"
+#include "Counterku.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -30,13 +31,7 @@
 
 
 /* USER CODE BEGIN PV */
-uint32_t sensA;
-uint32_t sensB;
-uint32_t sensC;
 
-uint32_t time_milisec=0;
-uint32_t time_sec=0;
-uint32_t time_minute=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -95,27 +90,19 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  sensA=value[0];
-	  sensB=value[1];
-	  sensC=value[2];
 
-	  time_milisec=milisec;
-	  time_sec=sec;
-	  time_minute=min;
+	  Show_Counter();
+	  show_timer();
 
-	  LCD_SetCursor(0,1);
-	  LCD_PrintNum(sensA);
-
-	  LCD_SetCursor(0,2);
-	  LCD_PrintNum(sensB);
-
-	  LCD_SetCursor(0,3);
-	  LCD_PrintNum(sensC);
-
-	  LCD_SetCursor(0,0);
-	  LCD_PrintNum(time_minute);LCD_Print(":");LCD_PrintNum(time_sec);LCD_Print(":");
-	  LCD_PrintNum(time_milisec);
-
+	  if(Sensor_ADC_One()){
+		  Count_Sens_One();
+	  }
+	  if(Sensor_ADC_Two()){
+		  Count_Sens_Two();
+	  }
+	  if(Sensor_ADC_Three()){
+		  Count_Sens_Three();
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

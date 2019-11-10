@@ -9,9 +9,10 @@
 #define INC_SENSORKU_H_
 
 void Open_ADC_Init(void);
-void Sensor_ADC_One(void);
-void Sensor_ADC_Two(void);
-void Sensor_ADC_Three(void);
+void Error_Sensor_Hendler(void);
+uint32_t Sensor_ADC_One(void);
+uint32_t Sensor_ADC_Two(void);
+uint32_t Sensor_ADC_Three(void);
 
 uint32_t value[3];
 

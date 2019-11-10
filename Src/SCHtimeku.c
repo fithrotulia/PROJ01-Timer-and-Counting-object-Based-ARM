@@ -8,6 +8,11 @@
 #include "SCHtimeku.h"
 #include "stm32f1xx_hal.h"
 #include "HardwareInitku.h"
+#include "LCDku.h"
+
+uint32_t time_milisec=0;
+uint32_t time_sec=0;
+uint32_t time_minute=0;
 
 void TIM4_IRQHandler(void){
 
@@ -41,4 +46,12 @@ void task_run(void)
 		min++;
 		sec=0;
 	}
+}
+void show_timer(void){
+	time_milisec=milisec;
+	time_sec=sec;
+	time_minute=min;
+	LCD_SetCursor(8,3);
+	LCD_PrintNum(time_minute);LCD_Print(":");LCD_PrintNum(time_sec);LCD_Print(":");
+	LCD_PrintNum(time_milisec);
 }

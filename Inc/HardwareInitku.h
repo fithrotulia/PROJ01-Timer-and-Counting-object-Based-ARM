@@ -16,7 +16,6 @@ void MX_USART2_UART_Init(void);
 
 ADC_HandleTypeDef hadc1;
 DMA_HandleTypeDef hdma_adc1;
-
 UART_HandleTypeDef huart2;
 
 
