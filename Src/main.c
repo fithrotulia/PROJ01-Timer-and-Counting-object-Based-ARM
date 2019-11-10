@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include "LCDku.h"
 #include "HardwareInitku.h"
+#include "SCHtimeku.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -32,6 +33,10 @@ uint32_t value[3];
 uint32_t sensA;
 uint32_t sensB;
 uint32_t sensC;
+
+uint32_t time_milisec=0;
+uint32_t time_sec=0;
+uint32_t time_minute=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -83,8 +88,7 @@ int main(void)
 
   LCD_Clear();
   HAL_GPIO_WritePin(LCD_Katoda_GPIO_Port, LCD_Katoda_Pin, GPIO_PIN_SET);
-  LCD_SetCursor(0,0);
-  LCD_Print("Bismillah!!!");
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -95,6 +99,10 @@ int main(void)
 	  sensB=value[1];
 	  sensC=value[2];
 
+	  time_milisec=milisec;
+	  time_sec=sec;
+	  time_minute=min;
+
 	  LCD_SetCursor(0,1);
 	  LCD_PrintNum(sensA);
 
@@ -103,6 +111,11 @@ int main(void)
 
 	  LCD_SetCursor(0,3);
 	  LCD_PrintNum(sensC);
+
+	  LCD_SetCursor(0,0);
+	  LCD_PrintNum(time_minute);LCD_Print(":");LCD_PrintNum(time_sec);LCD_Print(":");
+	  LCD_PrintNum(time_milisec);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
