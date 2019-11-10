@@ -18,6 +18,11 @@ uint16_t milisec;
 uint8_t sec;
 uint8_t min;
 
+uint32_t time_milisec;
+uint32_t time_sec;
+uint32_t time_minute;
+
+uint64_t counter_stop;
 
 
 #endif /* INC_SCHTIMEKU_H_ */

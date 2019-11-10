@@ -38,7 +38,6 @@ int main(void)
 
 		Show_Counter();
 		show_timer();
-
 		if(Sensor_ADC_One()){
 			Count_Sens_One();
 		}
@@ -47,6 +46,10 @@ int main(void)
 		}
 		if(Sensor_ADC_Three()){
 			Count_Sens_Three();
+		}
+
+		if(pbReset_Handler()){
+			PbReset_ON();
 		}
 		/* USER CODE END WHILE */
 

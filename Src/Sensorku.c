@@ -86,6 +86,35 @@ uint32_t Sensor_ADC_Three(void)
 
 }
 
+
+uint8_t PbSTOP_Handler(void)
+{
+	uint8_t flagDetected=0;
+	if(HAL_GPIO_ReadPin(Pb_SS_GPIO_Port, Pb_SS_Pin)==GPIO_PIN_RESET){
+		HAL_Delay(10);
+		if(HAL_GPIO_ReadPin(Pb_SS_GPIO_Port, Pb_SS_Pin)==GPIO_PIN_RESET){
+			while(HAL_GPIO_ReadPin(Pb_SS_GPIO_Port, Pb_SS_Pin)==GPIO_PIN_RESET);
+			flagDetected=1;
+		}
+	}
+
+	return flagDetected;
+}
+
+uint8_t pbReset_Handler(void)
+{
+	uint8_t flagDetected=0;
+	if(HAL_GPIO_ReadPin(Pb_Reset_GPIO_Port, Pb_Reset_Pin)==GPIO_PIN_RESET){
+		HAL_Delay(10);
+		if(HAL_GPIO_ReadPin(Pb_Reset_GPIO_Port, Pb_Reset_Pin)==GPIO_PIN_RESET){
+			while(HAL_GPIO_ReadPin(Pb_Reset_GPIO_Port, Pb_Reset_Pin)==GPIO_PIN_RESET);
+			flagDetected=1;
+		}
+	}
+
+	return flagDetected;
+}
+
 void Error_Sensor_Hendler(void)
 {
 	HAL_GPIO_WritePin(Buzzer_GPIO_Port, Buzzer_Pin, GPIO_PIN_SET);

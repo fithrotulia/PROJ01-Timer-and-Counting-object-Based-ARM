@@ -11,6 +11,8 @@
 void Count_Sens_One(void);
 void Count_Sens_Two(void);
 void Count_Sens_Three(void);
+void PbStop_ON(void);
+void PbReset_ON(void);
 void Show_Counter(void);
 
 

@@ -10,9 +10,6 @@
 #include "HardwareInitku.h"
 #include "LCDku.h"
 
-uint32_t time_milisec=0;
-uint32_t time_sec=0;
-uint32_t time_minute=0;
 
 void TIM4_IRQHandler(void){
 
@@ -34,10 +31,18 @@ void task_Init(void){
 	milisec=0;
 	sec=0;
 	min=0;
+
+	time_milisec=0;
+	time_sec=0;
+	time_minute=0;
+
+	counter_stop=0;
 }
 void task_run(void)
 {
+	counter_stop++;
 	milisec++;
+
 	if(milisec>999){
 		sec++;
 		milisec=0;
