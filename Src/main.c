@@ -8,6 +8,7 @@
 #include "LCDku.h"
 #include "HardwareInitku.h"
 #include "SCHtimeku.h"
+#include "Sensorku.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -29,7 +30,6 @@
 
 
 /* USER CODE BEGIN PV */
-uint32_t value[3];
 uint32_t sensA;
 uint32_t sensB;
 uint32_t sensC;
@@ -83,7 +83,7 @@ int main(void)
   MX_ADC1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t *)value, 4);
+  Open_ADC_Init();
   LCD_Init();
 
   LCD_Clear();

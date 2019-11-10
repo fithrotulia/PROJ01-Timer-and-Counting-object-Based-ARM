@@ -9,6 +9,7 @@
 #include "stm32f1xx_hal.h"
 #include "LCDku.h"
 #include <stdio.h>
+#include "HardwareInitku.h"
 
 void LCD_Write4Bit(uint8_t data)
 {

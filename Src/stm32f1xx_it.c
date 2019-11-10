@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "SCHtimeku.h"
+#include "HardwareInitku.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

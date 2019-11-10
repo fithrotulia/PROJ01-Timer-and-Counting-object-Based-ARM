@@ -23,7 +23,7 @@ Src/stm32f1xx_it.o: ../Src/stm32f1xx_it.c ../Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
- ../Inc/stm32f1xx_it.h ../Inc/SCHtimeku.h
+ ../Inc/stm32f1xx_it.h ../Inc/SCHtimeku.h ../Inc/HardwareInitku.h
 
 ../Inc/main.h:
 
@@ -78,3 +78,5 @@ Src/stm32f1xx_it.o: ../Src/stm32f1xx_it.c ../Inc/main.h \
 ../Inc/stm32f1xx_it.h:
 
 ../Inc/SCHtimeku.h:
+
+../Inc/HardwareInitku.h:

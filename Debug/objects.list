@@ -17,6 +17,7 @@
 "Src/HardwareInitku.o"
 "Src/LCDku.o"
 "Src/SCHtimeku.o"
+"Src/Sensorku.o"
 "Src/main.o"
 "Src/stm32f1xx_hal_msp.o"
 "Src/stm32f1xx_it.o"

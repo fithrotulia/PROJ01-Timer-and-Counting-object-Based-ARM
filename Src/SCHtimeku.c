@@ -7,6 +7,7 @@
 #include "main.h"
 #include "SCHtimeku.h"
 #include "stm32f1xx_hal.h"
+#include "HardwareInitku.h"
 
 void TIM4_IRQHandler(void){
 
