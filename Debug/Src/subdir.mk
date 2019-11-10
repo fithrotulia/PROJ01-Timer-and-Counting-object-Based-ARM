@@ -4,6 +4,9 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Src/HardwareInitku.c \
+../Src/LCDku.c \
+../Src/SCHtimeku.c \
 ../Src/main.c \
 ../Src/stm32f1xx_hal_msp.c \
 ../Src/stm32f1xx_it.c \
@@ -12,6 +15,9 @@ C_SRCS += \
 ../Src/system_stm32f1xx.c 
 
 OBJS += \
+./Src/HardwareInitku.o \
+./Src/LCDku.o \
+./Src/SCHtimeku.o \
 ./Src/main.o \
 ./Src/stm32f1xx_hal_msp.o \
 ./Src/stm32f1xx_it.o \
@@ -20,6 +26,9 @@ OBJS += \
 ./Src/system_stm32f1xx.o 
 
 C_DEPS += \
+./Src/HardwareInitku.d \
+./Src/LCDku.d \
+./Src/SCHtimeku.d \
 ./Src/main.d \
 ./Src/stm32f1xx_hal_msp.d \
 ./Src/stm32f1xx_it.d \
@@ -29,6 +38,12 @@ C_DEPS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
+Src/HardwareInitku.o: ../Src/HardwareInitku.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/HardwareInitku.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
+Src/LCDku.o: ../Src/LCDku.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/LCDku.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
+Src/SCHtimeku.o: ../Src/SCHtimeku.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/SCHtimeku.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Src/main.o: ../Src/main.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Src/stm32f1xx_hal_msp.o: ../Src/stm32f1xx_hal_msp.c
