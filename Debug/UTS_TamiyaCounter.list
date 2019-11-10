@@ -37,13 +37,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  16 .debug_macro  00015053  00000000  00000000  0002fc60  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   0000a788  00000000  00000000  00044cb3  2**0
+ 17 .debug_line   0000a784  00000000  00000000  00044cb3  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    00070251  00000000  00000000  0004f43b  2**0
+ 18 .debug_str    00070251  00000000  00000000  0004f437  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  000bf68c  2**0
+ 19 .comment      0000007b  00000000  00000000  000bf688  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002650  00000000  00000000  000bf708  2**2
+ 20 .debug_frame  00002650  00000000  00000000  000bf704  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -7763,103 +7763,88 @@ void Error_Sensor_Hendler(void)
 
 08002d5c <main>:
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
  8002d5c:	b580      	push	{r7, lr}
  8002d5e:	af00      	add	r7, sp, #0
-  
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+	HAL_Init();
  8002d60:	f7fd f9f4 	bl	800014c <HAL_Init>
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
-  SystemClock_Config();
+	SystemClock_Config();
  8002d64:	f7ff fbb6 	bl	80024d4 <SystemClock_Config>
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
+	/* Initialize all configured peripherals */
+	MX_GPIO_Init();
  8002d68:	f7ff fcc2 	bl	80026f0 <MX_GPIO_Init>
-  MX_DMA_Init();
+	MX_DMA_Init();
  8002d6c:	f7ff fca2 	bl	80026b4 <MX_DMA_Init>
-  MX_ADC1_Init();
+	MX_ADC1_Init();
  8002d70:	f7ff fc0c 	bl	800258c <MX_ADC1_Init>
-  MX_USART2_UART_Init();
+	MX_USART2_UART_Init();
  8002d74:	f7ff fc74 	bl	8002660 <MX_USART2_UART_Init>
-  /* USER CODE BEGIN 2 */
-  Open_ADC_Init();
+	/* USER CODE BEGIN 2 */
+	Open_ADC_Init();
  8002d78:	f7ff fea8 	bl	8002acc <Open_ADC_Init>
-  LCD_Init();
+	LCD_Init();
  8002d7c:	f7ff fdaa 	bl	80028d4 <LCD_Init>
-
-  LCD_Clear();
+	LCD_Clear();
  8002d80:	f7ff fe2a 	bl	80029d8 <LCD_Clear>
-  HAL_GPIO_WritePin(LCD_Katoda_GPIO_Port, LCD_Katoda_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(LCD_Katoda_GPIO_Port, LCD_Katoda_Pin, GPIO_PIN_SET);
  8002d84:	2201      	movs	r2, #1
  8002d86:	f44f 4100 	mov.w	r1, #32768	; 0x8000
  8002d8a:	480e      	ldr	r0, [pc, #56]	; (8002dc4 <main+0x68>)
  8002d8c:	f7fe fb4a 	bl	8001424 <HAL_GPIO_WritePin>
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
+	/* Infinite loop */
+	/* USER CODE BEGIN WHILE */
+	while (1)
+	{
 
-	  Show_Counter();
+		Show_Counter();
  8002d90:	f7ff faba 	bl	8002308 <Show_Counter>
-	  show_timer();
+		show_timer();
  8002d94:	f7ff fe5c 	bl	8002a50 <show_timer>
 
-	  if(Sensor_ADC_One()){
+		if(Sensor_ADC_One()){
  8002d98:	f7ff fea6 	bl	8002ae8 <Sensor_ADC_One>
  8002d9c:	4603      	mov	r3, r0
  8002d9e:	2b00      	cmp	r3, #0
  8002da0:	d001      	beq.n	8002da6 <main+0x4a>
-		  Count_Sens_One();
+			Count_Sens_One();
  8002da2:	f7ff fa33 	bl	800220c <Count_Sens_One>
-	  }
-	  if(Sensor_ADC_Two()){
+		}
+		if(Sensor_ADC_Two()){
  8002da6:	f7ff fefb 	bl	8002ba0 <Sensor_ADC_Two>
  8002daa:	4603      	mov	r3, r0
  8002dac:	2b00      	cmp	r3, #0
  8002dae:	d001      	beq.n	8002db4 <main+0x58>
-		  Count_Sens_Two();
+			Count_Sens_Two();
  8002db0:	f7ff fa56 	bl	8002260 <Count_Sens_Two>
-	  }
-	  if(Sensor_ADC_Three()){
+		}
+		if(Sensor_ADC_Three()){
  8002db4:	f7ff ff50 	bl	8002c58 <Sensor_ADC_Three>
  8002db8:	4603      	mov	r3, r0
  8002dba:	2b00      	cmp	r3, #0
  8002dbc:	d0e8      	beq.n	8002d90 <main+0x34>
-		  Count_Sens_Three();
+			Count_Sens_Three();
  8002dbe:	f7ff fa79 	bl	80022b4 <Count_Sens_Three>
-	  Show_Counter();
+		Show_Counter();
  8002dc2:	e7e5      	b.n	8002d90 <main+0x34>
  8002dc4:	40010800 	.word	0x40010800
 
 08002dc8 <Error_Handler>:
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
 void Error_Handler(void)
 {
  8002dc8:	b480      	push	{r7}
  8002dca:	af00      	add	r7, sp, #0
-  /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
+	/* USER CODE BEGIN Error_Handler_Debug */
+	/* User can add his own implementation to report the HAL error return state */
 
-  /* USER CODE END Error_Handler_Debug */
+	/* USER CODE END Error_Handler_Debug */
 }
  8002dcc:	bf00      	nop
  8002dce:	46bd      	mov	sp, r7

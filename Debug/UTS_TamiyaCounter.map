@@ -3698,7 +3698,7 @@ OUTPUT(UTS_TamiyaCounter.elf elf32-littlearm)
  .debug_macro   0x0000000000014c79      0x23b Src/sysmem.o
  .debug_macro   0x0000000000014eb4      0x19f Src/system_stm32f1xx.o
 
-.debug_line     0x0000000000000000     0xa788
+.debug_line     0x0000000000000000     0xa784
  .debug_line    0x0000000000000000      0x871 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
  .debug_line    0x0000000000000871      0xbc3 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.o
  .debug_line    0x0000000000001434      0xa07 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.o
@@ -3713,12 +3713,12 @@ OUTPUT(UTS_TamiyaCounter.elf elf32-littlearm)
  .debug_line    0x0000000000006933      0x9cc Src/LCDku.o
  .debug_line    0x00000000000072ff      0x758 Src/SCHtimeku.o
  .debug_line    0x0000000000007a57      0x73d Src/Sensorku.o
- .debug_line    0x0000000000008194      0x99f Src/main.o
- .debug_line    0x0000000000008b33      0x700 Src/stm32f1xx_hal_msp.o
- .debug_line    0x0000000000009233      0x77f Src/stm32f1xx_it.o
- .debug_line    0x00000000000099b2      0x693 Src/sysmem.o
- .debug_line    0x000000000000a045      0x6c4 Src/system_stm32f1xx.o
- .debug_line    0x000000000000a709       0x7f Startup/startup_stm32f103c8tx.o
+ .debug_line    0x0000000000008194      0x99b Src/main.o
+ .debug_line    0x0000000000008b2f      0x700 Src/stm32f1xx_hal_msp.o
+ .debug_line    0x000000000000922f      0x77f Src/stm32f1xx_it.o
+ .debug_line    0x00000000000099ae      0x693 Src/sysmem.o
+ .debug_line    0x000000000000a041      0x6c4 Src/system_stm32f1xx.o
+ .debug_line    0x000000000000a705       0x7f Startup/startup_stm32f103c8tx.o
 
 .debug_str      0x0000000000000000    0x70251
  .debug_str     0x0000000000000000    0x69571 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
