@@ -10,9 +10,9 @@
 
 
 #define LCD_EN()			{ HAL_GPIO_WritePin(LCD_Enable_GPIO_Port, LCD_Enable_Pin, GPIO_PIN_SET);\
-							  for(uint16_t i=0; i<2000; i++);\
+							  for(uint16_t i=0; i<1500; i++);\
 							  HAL_GPIO_WritePin(LCD_Enable_GPIO_Port, LCD_Enable_Pin, GPIO_PIN_RESET);\
-							  for(uint16_t i=0; i<2000; i++);}
+							  for(uint16_t i=0; i<1500; i++);}
 
 #define LCD_RW(state)		{HAL_GPIO_WritePin(LCD_RW_GPIO_Port, LCD_RW_Pin, (state)? GPIO_PIN_SET : GPIO_PIN_RESET);}
 #define LCD_RS(state)		{HAL_GPIO_WritePin(LCD_RS_GPIO_Port, LCD_RS_Pin, (state)? GPIO_PIN_SET : GPIO_PIN_RESET);}

@@ -31,6 +31,8 @@ int main(void)
 	HAL_GPIO_WritePin(LCD_Katoda_GPIO_Port, LCD_Katoda_Pin, GPIO_PIN_SET);
 	SCH_Init();
 	SCH_Init2();
+	TIM4->CR1 |= TIM_CR1_CEN;
+	TIM3->CR1 |= TIM_CR1_CEN;
 	/* USER CODE END 2 */
 
 	/* Infinite loop */

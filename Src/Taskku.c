@@ -78,7 +78,6 @@ void Task_Run_Main(void)
 	if(bouncing1==3){
 		stopwatchEnable = !(stopwatchEnable);
 		Task_Display(stopwatchEnable);
-		TIM4->CR1 |= TIM_CR1_CEN;
 	}
 
 	/*	Reset Button */
