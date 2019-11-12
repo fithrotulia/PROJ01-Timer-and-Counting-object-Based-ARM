@@ -11,7 +11,7 @@
 #include "main.h"
 #include "HardwareInitku.h"
 
-void TIM2_IRQHandler(void);
+void TIM3_IRQHandler(void);
 void SCH_Init2(void);
 
 #endif /* INC_SCHTIMEKU2_H_ */

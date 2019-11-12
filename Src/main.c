@@ -4,13 +4,12 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stm32f1xx_hal.h"
-#include <stdio.h>
 #include "LCDku.h"
 #include "HardwareInitku.h"
 #include "SCHtimeku.h"
 #include "SCHtimeku2.h"
 #include "Sensorku.h"
-#include "Counterku.h"
+#include "Taskku.h"
 /* USER CODE END Includes */
 /**
  * @brief  The application entry point.
@@ -26,12 +25,10 @@ int main(void)
 	MX_ADC1_Init();
 	MX_USART2_UART_Init();
 	/* USER CODE BEGIN 2 */
+	Task_Init();
 	Open_ADC_Init();
 	LCD_Init();
-	LCD_Clear();
 	HAL_GPIO_WritePin(LCD_Katoda_GPIO_Port, LCD_Katoda_Pin, GPIO_PIN_SET);
-	LCD_SetCursor(0, 0);
-	LCD_Print("BISMILLAH.");
 	SCH_Init();
 	SCH_Init2();
 	/* USER CODE END 2 */

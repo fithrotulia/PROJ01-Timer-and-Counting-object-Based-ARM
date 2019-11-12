@@ -14,6 +14,7 @@
 
 void Task_Init(void);
 void Task_Run_Main(void);
+void Task_Run_Stopwatch(void);
 void Task_Error_Handler(_Bool, char *);
 void Task_Refresh(void);
 void Task_Display(_Bool);
