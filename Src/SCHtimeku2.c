@@ -20,7 +20,6 @@ void SCH_Init2(void)
 	TIM3->CR1 |= TIM_CR1_URS;
 	TIM3->DIER |= TIM_DIER_UIE;
 	TIM3->EGR |= TIM_EGR_UG;
-	//TIM3->CR1 |= TIM_CR1_CEN;
 
 	NVIC_EnableIRQ(TIM3_IRQn);
 }

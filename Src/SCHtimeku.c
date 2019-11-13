@@ -25,7 +25,6 @@ void SCH_Init(void){
 	TIM4->CR1 |= TIM_CR1_URS;
 	TIM4->DIER |= TIM_DIER_UIE;
 	TIM4->EGR |= TIM_EGR_UG;
-	//TIM4->CR1 |= TIM_CR1_CEN;
 
 	NVIC_EnableIRQ(TIM4_IRQn);
 
