@@ -13,33 +13,63 @@
 #include "UARTku.h"
 #include "SCHtimeku.h"
 
-uint16_t Dark[3];
+uint16_t Dark[3]={0, 0, 0};
 uint16_t Light[3]={4096, 4096, 4096};
-uint16_t Thrs[3];
+uint16_t Thrs[3]={0, 0, 0};
 
-uint16_t milisecond=0, second=0, minute=0;
+uint16_t milisecond=0;
+uint16_t second=0;
+uint16_t minute=0;
 uint64_t counter_gap=0;
-uint16_t lapA_milis=0, lapA_Sec=0, lapA_minute=0;
-uint16_t lapB_milis=0, lapB_Sec=0, lapB_minute=0;
-uint16_t lapC_milis=0, lapC_Sec=0, lapC_minute=0;
-uint8_t LAP_A=0, LAP_B=0, LAP_C=0;
 
-uint16_t refreshDisplay;
-uint16_t timeOut1=0, timeOut2=0, timeOut3=0, timeOut4=0, timeOut5=0, timeOutVal = 700;
+uint16_t lapA_milis=0;
+uint16_t lapA_Sec=0;
+uint16_t lapA_minute=0;
+uint16_t lapB_milis=0;
+uint16_t lapB_Sec=0;
+uint16_t lapB_minute=0;
+uint16_t lapC_milis=0;
+uint16_t lapC_Sec=0;
+uint16_t lapC_minute=0;
+uint8_t LAP_A=0;
+uint8_t LAP_B=0;
+uint8_t LAP_C=0;
+
+uint16_t refreshDisplay = 0;
+uint16_t timeOut1=0;
+uint16_t timeOut2=0;
+uint16_t timeOut3=0;
+uint16_t timeOut4=0;
+uint16_t timeOut5=0;
+uint16_t timeOutVal = 700;
 unsigned char bouncing1=0xFF;
 unsigned char bouncing2=0xFF;
 unsigned char bouncing3=0xFF;
 unsigned char bouncing4=0xFF;
 unsigned char bouncing5=0xFF;
-_Bool error;
-_Bool stopwatchEnable;
+_Bool error = 0;
+_Bool stopwatchEnable = 0;
 
 void Task_Init(void)
 {
 	milisecond=0;
 	second=0;
 	minute=0;
-	LCD_Init();
+	counter_gap=0;
+	timeOut1=0;
+	timeOut2=0;
+	timeOut3=0;
+	timeOut4=0;
+	timeOut5=0;
+	lapA_milis=0;
+	lapA_Sec=0;
+	lapA_minute=0;
+	lapB_milis=0;
+	lapB_Sec=0;
+	lapB_minute=0;
+	lapC_milis=0;
+	lapC_Sec=0;
+	lapC_minute=0;
 }
 void Task_Calibrate(_Bool state)
 {
@@ -107,11 +137,10 @@ void Task_Run_Main(void)
 
 	/*	Calibrate Sensor	*/
 	Task_Calibrate(!stopwatchEnable);
-	Task_Calibrate(!stopwatchEnable);
 
 	if(stopwatchEnable){
 		/*Sensor 1*/
-		if(value[0] < Thrs[0]){
+		if(value[0] > Thrs[0]){
 			if(timeOut3++ > timeOutVal){
 				stopwatchEnable=0;
 				LCD_Clear();
